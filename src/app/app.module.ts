@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CountryComponent } from './country/country.component';
 
 
 
@@ -21,7 +22,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   declarations: [
     AppComponent,
     CountriesListComponent,
-    HomeComponent
+    HomeComponent,
+    CountryComponent
   ],
   imports: [
     BrowserModule,

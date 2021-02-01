@@ -7,11 +7,16 @@ import { Country } from '../models/country';
   providedIn: 'root'
 })
 export class CountriesService {
-  public uri = 'https://restcountries.eu/rest/v2/all';
+  public uriAll = 'https://restcountries.eu/rest/v2/all';
+  public uriName = 'https://restcountries.eu/rest/v2/name';
 
   constructor(private http: HttpClient) { }
 
   getAll(): Promise<any> {
-    return this.http.get(`${this.uri}`).toPromise();
+    return this.http.get(`${this.uriAll}`).toPromise();
+  }
+
+  getCountry(countryName): Promise<any> {
+    return this.http.get(`${this.uriName}/${countryName}`).toPromise();
   }
 }

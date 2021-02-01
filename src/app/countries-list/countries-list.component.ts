@@ -35,7 +35,6 @@ export class CountriesListComponent implements OnInit, AfterViewInit {
       this.countries = countries;
       this.dataSource = new MatTableDataSource(this.countries);
       this.dataSource.paginator = this.paginator;
-      console.log(this.countries);
     }).catch(err => console.log(err));
   }
 
