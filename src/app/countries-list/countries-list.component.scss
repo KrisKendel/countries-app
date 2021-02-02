@@ -1,8 +1,15 @@
 .main-container {
+    margin-top: 20px;
     position: relative;
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.table-header {
+    background: white;
+    display: flex;
+    padding: 15px;
 }
 
 .table {
@@ -21,10 +28,12 @@
 
 .back-button {
     margin-right: auto;
+    width: 65px;
+    height: 35px;
 }
 
 .mat-row:hover {
     background-color: lightgray;
     cursor: pointer;
-  }
+}
 

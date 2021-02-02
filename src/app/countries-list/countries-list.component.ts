@@ -12,8 +12,9 @@ import { MatPaginator } from '@angular/material/paginator';
 export class CountriesListComponent implements OnInit, AfterViewInit {
   countries: Country[];
   dataSource: any = [];
+  loaded = false;
 
-  public pageSize = 10;
+  public pageSize = 8;
   public currentPage = 0;
   public totalSize = 0;
   public displayedColumns: string[] = ['name', 'nativeName', 'population', 'capital', 'flag'];
@@ -34,6 +35,7 @@ export class CountriesListComponent implements OnInit, AfterViewInit {
     this.countriesService.getAll().then(countries => {
       this.countries = countries;
       this.dataSource = new MatTableDataSource(this.countries);
+      this.loaded = true;
       this.dataSource.paginator = this.paginator;
     }).catch(err => console.log(err));
   }
