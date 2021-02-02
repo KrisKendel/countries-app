@@ -1,9 +1,14 @@
+@import '../../styles/mixins.scss'; 
+
 .main-container {
     margin-top: 20px;
     position: relative;
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
+    @include breakpoint(xs) {
+        width: 95%;
+    }
 }
 
 .table-header {
@@ -14,7 +19,13 @@
 
 .table {
     margin:auto;
-    width:100%
+    width:100%;
+}
+
+.cell {
+    @include breakpoint(xs) {
+        font-size: 11px;
+    }
 }
 
 .flag {
