@@ -1,0 +1,52 @@
+.container {
+    margin-top: 20px;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 55vh;
+    background: white;
+}
+
+.country-name {
+    text-align: center;
+}
+
+.flag {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 80px;
+}
+
+.back-button {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+#mapid { 
+    height: 300px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+ul {
+    columns: 2;
+}
+
+.border-title {
+    margin-left: 27px;
+    margin-bottom: 5px;
+}
+
+.border-button {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.borders {
+    display: inline;
+    height: 200px;
+}
