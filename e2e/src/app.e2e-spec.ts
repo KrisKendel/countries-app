@@ -1,23 +1,16 @@
-import { AppPage } from './app.po';
+import { App } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('Countries App e2e main', () => {
+  let page: App;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new App();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('countries app is running!');
+  it('Should start app with correct title', () => {
+    browser.get('/');
+    expect(browser.getTitle()).toEqual('Countries');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
-  });
 });
