@@ -1,11 +1,22 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementFinder } from 'protractor';
 
-export class AppPage {
-  navigateTo(): Promise<unknown> {
-    return browser.get(browser.baseUrl) as Promise<unknown>;
+const EC = browser.ExpectedConditions;
+
+export class App {
+
+  public waitForDOM(elem: ElementFinder, msg: string = ''): any {
+    return browser.wait(EC.presenceOf(elem), 15000, msg);
   }
 
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  getAppTestURL(): any {
+    return browser.baseUrl;
+  }
+
+  getPageURL(suffix: string): string {
+    return `${this.getAppTestURL()}${suffix}`;
+  }
+
+  getButton(): any {
+    return element(by.css('.enter-button'));
   }
 }
