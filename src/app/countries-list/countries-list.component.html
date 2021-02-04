@@ -1,13 +1,16 @@
 <div class="main-container">
     <div class="table-header">
         <button mat-raised-button class="back-button" routerLink="/home">Back</button>
+
         <div class="search">
             <mat-form-field>
                 <mat-label>Search countries</mat-label>
-                <input matInput #input (keyup)="applyFilter($event)">
+                <input matInput class="input-field" #input (keyup)="applyFilter($event)">
             </mat-form-field>
         </div>
+
     </div>
+    <h2 class="title">Countries table</h2>
     <table class="table" mat-table [dataSource]="dataSource">
         <div class="country-container">
             <ng-container matColumnDef="name">

@@ -15,4 +15,18 @@ describe('Countries-list Test', () => {
     it('Should navigate to Countries list component', async () => {
         page.navigateTo();
     });
+
+    it('Title Countries table should be displayed', async () => {
+        expect(page.getTitle()).toEqual('Countries table');
+    });
+
+    it('Search Input field should work', async () => {
+        expect(page.inputSearch()).toEqual('Croatia');
+    });
+
+    it('Should redirect to selected country (Croatia) when clicked', async () => {
+        const result = await page.openCountry();
+
+        expect(result).toBe(true);
+    });
 });

@@ -4,7 +4,7 @@ import { browser } from 'protractor';
 export class HomeTest {
     private app: App;
     private url: string;
-    private baseUrl = 'http://localhost:5000';
+    private baseUrl = 'http://localhost:4200';
 
     constructor(
         app: App,

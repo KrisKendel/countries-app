@@ -1,7 +1,7 @@
 import { App } from '../app.po';
 import { browser, element, by } from 'protractor';
 
-export class CountriesListTest {
+export class CountryTest {
     private app: App;
     private url: string;
     private baseUrl = 'http://localhost:4200';
@@ -15,25 +15,15 @@ export class CountriesListTest {
     }
 
     async navigateTo(): Promise<any> {
-        return browser.get('countries-list');
+        return browser.get('countries-list/Croatia');
     }
 
-    async getTitle(): Promise<string> {
-        return element(by.css('.title')).getText();
-    }
-
-    async inputSearch(): Promise<any> {
-        this.app.fillInputField('Croatia');
-
-        return element(by.css('.cell')).getText();
-    }
-
-    async openCountry(): Promise<any> {
-        const country = element(by.css('table [tabindex="0"]'));
-        country.click();
-
+    async openBorderCountry(): Promise<any> {
+        const borderCountry = element(by.css('.border-button'));
+        borderCountry.click();
+        browser.sleep(500);
         return browser.driver.getCurrentUrl().then(url => {
-            if (url === `${this.baseUrl}/countries-list/Croatia`) {
+            if (url === `${this.baseUrl}/countries-list/Bosnia%20and%20Herzegovina`) {
                 return true;
             } else {
                 return false;
