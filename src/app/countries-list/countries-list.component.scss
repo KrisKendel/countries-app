@@ -1,18 +1,18 @@
-@import '../../styles/mixins.scss'; 
+@import '../../styles.scss'; 
 
 .main-container {
+    @include center();
     margin-top: 20px;
     position: relative;
     width: 80%;
-    left: 50%;
-    transform: translateX(-50%);
+    
     @include breakpoint(xs) {
         width: 95%;
     }
 }
 
 .table-header {
-    background: white;
+    background: $color-white;
     display: flex;
     padding: 15px;
 }
@@ -44,12 +44,12 @@
 }
 
 .mat-row:hover {
-    background-color: lightgray;
+    background: $color-lightgray;
     cursor: pointer;
 }
 
 .title {
-    background: white;
+    background: $color-white;
     margin: 0;
     padding: 0 0 0 15px; 
 }

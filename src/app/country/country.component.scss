@@ -1,11 +1,12 @@
+@import '../../styles.scss'; 
+
 .container {
+    @include center();
+    position: relative;
     margin-top: 20px;
     width: 80%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     height: 55vh;
-    background: white;
+    background: $color-white;
 }
 
 .country-name {
@@ -13,9 +14,8 @@
 }
 
 .flag {
+    @include center();
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     height: 50px;
     width: 80px;
 }
@@ -25,11 +25,10 @@
     margin-left: 15px;
 }
 
-#mapid { 
+#mapid {
+    @include center();
     height: 300px;
-    width: 80%;
-    left: 50%;
-    transform: translateX(-50%); 
+    width: 80%; 
 }
 
 ul {

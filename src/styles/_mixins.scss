@@ -19,3 +19,8 @@
       @warn "Breakpoint mixin supports: xs, sm, md, lg";
     }
   }
+
+@mixin center() {
+  left: 50%;
+  transform: translateX(-50%);
+}
