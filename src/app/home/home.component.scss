@@ -3,11 +3,13 @@
 .container {
     height: 100%;
     position: relative;
+    
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      @include center();
+    }
   }
   
-  .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    @include center();
-  }
+  

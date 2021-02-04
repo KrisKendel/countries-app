@@ -9,48 +9,48 @@
     @include breakpoint(xs) {
         width: 95%;
     }
-}
 
-.table-header {
-    background: $color-white;
-    display: flex;
-    padding: 15px;
-}
-
-.table {
-    margin:auto;
-    width:100%;
-}
-
-.cell {
-    @include breakpoint(xs) {
-        font-size: 11px;
+    .title {
+        background: $color-white;
+        margin: 0;
+        padding: 0 0 0 15px; 
     }
-}
 
-.flag {
-    height: 50px;
-    width: 75px;
-}
+    .table-header {
+        background: $color-white;
+        display: flex;
+        padding: 15px;
 
-.paginator {
-    width: 100%;
-}
+        .back-button {
+            margin-right: auto;
+            width: 65px;
+            height: 35px;
+        }
+    }
 
-.back-button {
-    margin-right: auto;
-    width: 65px;
-    height: 35px;
-}
+    .table {
+        margin:auto;
+        width:100%;
 
-.mat-row:hover {
-    background: $color-lightgray;
-    cursor: pointer;
-}
+        .cell {
+            @include breakpoint(xs) {
+                font-size: 11px;
+            }
+        }
 
-.title {
-    background: $color-white;
-    margin: 0;
-    padding: 0 0 0 15px; 
+        .flag {
+            height: 50px;
+            width: 75px;
+        }
+    }
+
+    .paginator {
+        width: 100%;
+    }
+
+    .mat-row:hover {
+        background: $color-lightgray;
+        cursor: pointer;
+    }
 }
 
