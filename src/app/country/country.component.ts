@@ -40,7 +40,7 @@ export class CountryComponent implements OnInit {
       }).catch(err => console.log(err));
   }
 
-  async openCountry(alphaCode): Promise<any> {
+  async openCountry(alphaCode): Promise<void> {
     await this.countriesService.getCountryByAlphaCode(alphaCode)
               .then(country => {
                 this.router.navigate(['/countries-list/' + country.name]);
