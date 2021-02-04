@@ -19,4 +19,12 @@ export class App {
   getButton(): any {
     return element(by.css('.enter-button'));
   }
+
+  getInputField(): any {
+    return element(by.css('.input-field'));
+  }
+
+  fillInputField(value: string): any {
+    this.getInputField().sendKeys(value);
+  }
 }

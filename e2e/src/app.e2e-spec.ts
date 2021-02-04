@@ -1,5 +1,5 @@
 import { App } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser } from 'protractor';
 
 describe('Countries App e2e main', () => {
   let page: App;
