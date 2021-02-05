@@ -28,7 +28,7 @@ export class CountriesListTest {
         return element(by.css('.cell')).getText();
     }
 
-    async openCountry(): Promise<void|boolean> {
+    async openCountry(): Promise<void | boolean> {
         const country = element(by.css('table [tabindex="0"]'));
         country.click();
 
