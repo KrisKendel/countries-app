@@ -18,7 +18,7 @@ export class HomeTest {
         return browser.get('home');
     }
 
-    public async getMainButton(): Promise<any> {
+    public async getMainButton(): Promise<boolean> {
         const mainButton = this.app.getButton();
         return this.app.waitForDOM(mainButton);
     }

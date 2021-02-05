@@ -14,11 +14,11 @@ export class CountryTest {
         this.url = url;
     }
 
-    async navigateTo(): Promise<any> {
+    async navigateTo(): Promise<boolean> {
         return browser.get('countries-list/Croatia');
     }
 
-    async openBorderCountry(): Promise<any> {
+    async openBorderCountry(): Promise<void | boolean> {
         const borderCountry = element(by.css('.border-button'));
         borderCountry.click();
         browser.sleep(500);

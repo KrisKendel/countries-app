@@ -10,16 +10,6 @@ export class Country {
     borders: any[];
     nativeName: string;
     flag: string;
-    languages: Language[];
-}
-
-export class Language {
-    // tslint:disable-next-line: variable-name
-    iso639_1: string;
-    // tslint:disable-next-line: variable-name
-    iso639_2: string;
-    name: string;
-    nativeName: string;
 }
 
 export class LatLng {

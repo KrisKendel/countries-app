@@ -11,7 +11,7 @@ import * as L from 'leaflet';
 })
 export class CountryComponent implements OnInit {
   countryName: string;
-  fetchedCountry: any;
+  fetchedCountry: Country;
   lat: number;
   lng: number;
   loaded = false;
@@ -40,17 +40,17 @@ export class CountryComponent implements OnInit {
       }).catch(err => console.log(err));
   }
 
-  async openCountry(alphaCode): Promise<void> {
+  async openCountry(alphaCode: string): Promise<void> {
     await this.countriesService.getCountryByAlphaCode(alphaCode)
-              .then(country => {
-                this.router.navigate(['/countries-list/' + country.name]);
-                this.countriesService.getCountryByName(country.name).then(pickedCountry => {
-                  this.fetchedCountry = pickedCountry;
-                  this.lat = this.fetchedCountry[0].latlng[0];
-                  this.lng = this.fetchedCountry[0].latlng[1];
-                  this.map.setView([this.lat, this.lng], 6);
-                });
-              }).catch(err => console.log(err));
+      .then(country => {
+        this.router.navigate(['/countries-list/' + country.name]);
+        this.countriesService.getCountryByName(country.name).then(pickedCountry => {
+          this.fetchedCountry = pickedCountry;
+          this.lat = this.fetchedCountry[0].latlng[0];
+          this.lng = this.fetchedCountry[0].latlng[1];
+          this.map.setView([this.lat, this.lng], 6);
+        });
+      }).catch(err => console.log(err));
   }
 
   mapInit(): void {
@@ -59,5 +59,5 @@ export class CountryComponent implements OnInit {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
-}
+  }
 }
