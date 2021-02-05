@@ -14,7 +14,7 @@ export class CountriesListTest {
         this.url = url;
     }
 
-    async navigateTo(): Promise<any> {
+    async navigateTo(): Promise<boolean> {
         return browser.get('countries-list');
     }
 
@@ -22,13 +22,13 @@ export class CountriesListTest {
         return element(by.css('.title')).getText();
     }
 
-    async inputSearch(): Promise<any> {
+    async inputSearch(): Promise<string> {
         this.app.fillInputField('Croatia');
 
         return element(by.css('.cell')).getText();
     }
 
-    async openCountry(): Promise<any> {
+    async openCountry(): Promise<void | boolean> {
         const country = element(by.css('table [tabindex="0"]'));
         country.click();
 

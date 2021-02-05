@@ -8,7 +8,7 @@ export class App {
     return browser.wait(EC.presenceOf(elem), 15000, msg);
   }
 
-  getAppTestURL(): any {
+  getAppTestURL(): string {
     return browser.baseUrl;
   }
 
@@ -16,15 +16,15 @@ export class App {
     return `${this.getAppTestURL()}${suffix}`;
   }
 
-  getButton(): any {
+  getButton(): ElementFinder {
     return element(by.css('.enter-button'));
   }
 
-  getInputField(): any {
+  getInputField(): ElementFinder {
     return element(by.css('.input-field'));
   }
 
-  fillInputField(value: string): any {
+  fillInputField(value: string): void {
     this.getInputField().sendKeys(value);
   }
 }
