@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Country } from '../models/country';
 import { CountriesService } from '../services/countries.service';
@@ -9,26 +9,24 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './countries-list.component.html',
   styleUrls: ['./countries-list.component.scss']
 })
-export class CountriesListComponent implements OnInit, AfterViewInit {
+export class CountriesListComponent implements OnInit {
   countries: Country[];
-  dataSource: any = [];
+  dataSource: MatTableDataSource<Country> = null;
   loaded = false;
-
-  public pageSize = 8;
-  public currentPage = 0;
-  public totalSize = 0;
-  public displayedColumns: string[] = ['name', 'nativeName', 'population', 'capital', 'flag'];
+  pageSize = 8;
+  currentPage = 0;
+  displayedColumns: string[] = ['name', 'nativeName', 'population', 'capital', 'flag'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private countriesService: CountriesService) { }
 
   ngOnInit(): void {
-    this.getAllCountries();
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    if (localStorage.getItem('all-countries') === null) {
+      this.getAllCountries();
+    } else {
+      this.getAllCountriesFromLs();
+    }
   }
 
   getAllCountries(): void {
@@ -37,12 +35,19 @@ export class CountriesListComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(this.countries);
       this.loaded = true;
       this.dataSource.paginator = this.paginator;
+      localStorage.setItem('all-countries', JSON.stringify(this.countries));
     }).catch(err => console.log(err));
+  }
+
+  getAllCountriesFromLs(): void {
+    this.countries = JSON.parse(localStorage.getItem('all-countries'));
+    this.dataSource = new MatTableDataSource(this.countries);
+    this.loaded = true;
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event): any {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

@@ -33,7 +33,12 @@
         width:100%;
 
         .cell {
+            width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             @include breakpoint(xs) {
+                width: 50px;
                 font-size: 11px;
             }
         }
@@ -42,6 +47,23 @@
             height: 50px;
             width: 75px;
         }
+
+        .tooltip .tooltiptext {
+            opacity: 0;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0 10px 0 10px; 
+            transition: opacity 0.5s;
+
+            position: absolute;
+            z-index: 1;
+          }
+          
+          .tooltip:hover .tooltiptext {
+            opacity: 1;
+          }
     }
 
     .paginator {

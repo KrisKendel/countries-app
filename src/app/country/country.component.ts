@@ -25,18 +25,25 @@ export class CountryComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.countryName = this.activatedRoute.snapshot.params.countryName;
-    await this.fetchCountry().then(() => {
+
+    if (localStorage.getItem(`${this.countryName}`) === null) {
+      await this.fetchCountry().then(() => {
+        this.mapInit();
+      }).catch(err => console.log(err));
+    } else {
+      await this.fetchCountryFromLs();
       this.mapInit();
-    });
+    }
   }
 
   async fetchCountry(): Promise<void> {
     await this.countriesService.getCountryByName(this.countryName)
       .then(country => {
-        this.fetchedCountry = country;
-        this.lat = this.fetchedCountry[0].latlng[0];
-        this.lng = this.fetchedCountry[0].latlng[1];
+        this.fetchedCountry = country[0];
+        this.lat = this.fetchedCountry.latlng[0];
+        this.lng = this.fetchedCountry.latlng[1];
         this.loaded = true;
+        localStorage.setItem(`${this.fetchedCountry.name}`, JSON.stringify(this.fetchedCountry));
       }).catch(err => console.log(err));
   }
 
@@ -44,13 +51,19 @@ export class CountryComponent implements OnInit {
     await this.countriesService.getCountryByAlphaCode(alphaCode)
       .then(country => {
         this.router.navigate(['/countries-list/' + country.name]);
-        this.countriesService.getCountryByName(country.name).then(pickedCountry => {
-          this.fetchedCountry = pickedCountry;
-          this.lat = this.fetchedCountry[0].latlng[0];
-          this.lng = this.fetchedCountry[0].latlng[1];
-          this.map.setView([this.lat, this.lng], 6);
-        });
+        this.fetchedCountry = country;
+        this.lat = this.fetchedCountry.latlng[0];
+        this.lng = this.fetchedCountry.latlng[1];
+        this.map.setView([this.lat, this.lng], 6);
+        localStorage.setItem(`${this.fetchedCountry.name}`, JSON.stringify(this.fetchedCountry));
       }).catch(err => console.log(err));
+  }
+
+  fetchCountryFromLs(): void {
+    this.fetchedCountry = JSON.parse(localStorage.getItem(`${this.countryName}`));
+    this.lat = this.fetchedCountry.latlng[0];
+    this.lng = this.fetchedCountry.latlng[1];
+    this.loaded = true;
   }
 
   mapInit(): void {

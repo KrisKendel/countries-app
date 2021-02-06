@@ -5,14 +5,10 @@ export class Country {
     region: string;
     subregion: string;
     population: number;
-    latlng: LatLng[];
+    latlng: number[];
     area: number;
-    borders: any[];
+    borders: string[];
     nativeName: string;
     flag: string;
 }
 
-export class LatLng {
-    0: number;
-    1: number;
-}

@@ -25,7 +25,7 @@ export class CountriesListTest {
     async inputSearch(): Promise<string> {
         this.app.fillInputField('Croatia');
 
-        return element(by.css('.cell')).getText();
+        return element(by.css('tbody:nth-of-type(1) .cell')).getText();
     }
 
     async openCountry(): Promise<void | boolean> {
