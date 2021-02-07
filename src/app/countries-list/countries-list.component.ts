@@ -43,7 +43,7 @@ export class CountriesListComponent implements OnInit {
     this.countries = JSON.parse(localStorage.getItem('all-countries'));
     this.dataSource = new MatTableDataSource(this.countries);
     this.loaded = true;
-    this.dataSource.paginator = this.paginator;
+    setTimeout(() => this.dataSource.paginator = this.paginator, 500);
   }
 
   applyFilter(event: Event): any {
