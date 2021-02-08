@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Country } from '../models/country';
 import { CountriesService } from '../services/countries.service';
@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './countries-list.component.html',
   styleUrls: ['./countries-list.component.scss']
 })
-export class CountriesListComponent implements OnInit {
+export class CountriesListComponent implements AfterViewInit {
   countries: Country[];
   dataSource: MatTableDataSource<Country> = null;
   loaded = false;
@@ -21,7 +21,7 @@ export class CountriesListComponent implements OnInit {
 
   constructor(private countriesService: CountriesService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     if (localStorage.getItem('all-countries') === null) {
       this.getAllCountries();
     } else {
@@ -43,7 +43,7 @@ export class CountriesListComponent implements OnInit {
     this.countries = JSON.parse(localStorage.getItem('all-countries'));
     this.dataSource = new MatTableDataSource(this.countries);
     this.loaded = true;
-    setTimeout(() => this.dataSource.paginator = this.paginator, 500);
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event): any {
