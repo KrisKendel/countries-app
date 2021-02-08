@@ -2,20 +2,20 @@
     <mat-spinner *ngIf="this.loaded === false"></mat-spinner>
     <div class="container" *ngIf="this.fetchedCountry">
         <button class="back-button" mat-raised-button routerLink="/countries-list">Back</button>
-        <h1 class="country-name">{{ this.fetchedCountry[0].name }}</h1>
-        <img class="flag" src="{{ this.fetchedCountry[0].flag }}" alt="flag">
+        <h1 class="country-name">{{ this.fetchedCountry.name }}</h1>
+        <img class="flag" src="{{ this.fetchedCountry.flag }}" alt="flag">
         <ul>
-            <li><strong>Native name:</strong> {{ this.fetchedCountry[0].nativeName }}</li>
-            <li><strong>Population:</strong> {{ this.fetchedCountry[0].population }}</li>
-            <li><strong>Region:</strong> {{ this.fetchedCountry[0].region }}</li>
-            <li><strong>Subregion:</strong> {{ this.fetchedCountry[0].subregion }}</li>
-            <li><strong>Latitude:</strong> {{ this.fetchedCountry[0].latlng[0] }}</li>
-            <li><strong>Longitude:</strong> {{ this.fetchedCountry[0].latlng[1] }}</li>
-            <li><strong>Area:</strong> {{ this.fetchedCountry[0].area }}</li>
-            <li><strong>Language:</strong> {{ this.fetchedCountry[0].languages[0].name }}</li>
+            <li><strong>Native name:</strong> {{ this.fetchedCountry.nativeName }}</li>
+            <li><strong>Population:</strong> {{ this.fetchedCountry.population | number }}</li>
+            <li><strong>Region:</strong> {{ this.fetchedCountry.region }}</li>
+            <li><strong>Subregion:</strong> {{ this.fetchedCountry.subregion }}</li>
+            <li><strong>Latitude:</strong> {{ this.fetchedCountry.latlng[0] | number }}</li>
+            <li><strong>Longitude:</strong> {{ this.fetchedCountry.latlng[1] | number }}</li>
+            <li><strong>Area:</strong> {{ this.fetchedCountry.area | number }} km²</li>
+            <li><strong>Language:</strong> {{ this.fetchedCountry.languages[0].name }}</li>
         </ul>
-        <h3 class="border-title" *ngIf="this.fetchedCountry[0].borders">Border Countries:</h3>
-        <div class="borders" *ngFor="let border of this.fetchedCountry[0].borders">
+        <h3 class="border-title" *ngIf="this.fetchedCountry.borders">Border Countries:</h3>
+        <div class="borders" *ngFor="let border of this.fetchedCountry.borders">
             <button class="border-button" mat-raised-button (click)="openCountry(border)"> {{ border }} </button>
         </div>
     </div>

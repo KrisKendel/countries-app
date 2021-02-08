@@ -19,7 +19,7 @@ export class CountryTest {
     }
 
     async openBorderCountry(): Promise<void | boolean> {
-        const borderCountry = element(by.css('.border-button'));
+        const borderCountry = element(by.css('.borders:nth-of-type(1)'));
         borderCountry.click();
         browser.sleep(500);
         return browser.driver.getCurrentUrl().then(url => {
